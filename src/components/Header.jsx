@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 // Header.jsx
 export default function Header() {
     return (
@@ -5,7 +7,7 @@ export default function Header() {
             <header>
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Bool Movies</a>
+                        <Link class="navbar-brand" to="/">Bool Movies</Link>
                     </div>
                 </nav>
             </header>

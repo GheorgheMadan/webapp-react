@@ -1,6 +1,7 @@
 // import delle librerire necessarie per le rotte del app
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+// import del css di bootstrap
 import "bootstrap/dist/css/bootstrap.min.css"
 
 // import del Layout di default 
