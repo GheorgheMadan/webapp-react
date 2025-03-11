@@ -1,24 +1,24 @@
 // import delle librerire necessarie per le rotte del app
-import { BrowserRouter, Router, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 // import del Layout di default 
 import DefaultLayout from "./layouts/DefaultLayout"
 
 // import delle pagine 
 import HomePage from "./pages/HomePage"
-import MoviePage from "./pages/"
+import MoviePage from "./pages/MoviePage"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Router>
+        <Routes>
           <Route element={<DefaultLayout />}>
-            <Route index element={<HomePage />} />
-            <Router path="movie/:id" element={<MoviePage />} />
+            <Route index path="/" element={<HomePage />} />
+            <Route path="movie/:id" element={<MoviePage />} />
           </Route>
-        </Router>
+        </Routes>
       </BrowserRouter>
     </>
   )
