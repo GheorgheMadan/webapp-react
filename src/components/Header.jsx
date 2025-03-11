@@ -3,7 +3,11 @@ export default function Header() {
     return (
         <>
             <header>
-                <h1>Bool Movies</h1>
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Bool Movies</a>
+                    </div>
+                </nav>
             </header>
         </>
     )

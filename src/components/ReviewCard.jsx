@@ -2,7 +2,21 @@
 export default function ReviewCard() {
     return (
         <>
-            <h4>sono la pagina delle recensioni </h4>
+            <div className="card mb-4">
+                <div className="card-body">
+                    <p className="card-text">
+                        testo della recensione
+                    </p>
+                    <strong>
+                        Vote: voto recensione
+                    </strong>
+                    <address>
+                        <i>
+                            By nome del recensore
+                        </i>
+                    </address>
+                </div>
+            </div>
         </>
     )
 }
