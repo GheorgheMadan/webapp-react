@@ -10,6 +10,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 // import delle pagine 
 import HomePage from "./pages/HomePage"
 import MoviePage from "./pages/MoviePage"
+import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
           <Route element={<DefaultLayout />}>
             <Route index path="/" element={<HomePage />} />
             <Route path="movie/:id" element={<MoviePage />} />
+            {/* La rotta "path='*'" cattura tutte le URL non definite in precedenza, reindirizzando l'utente a una pagina di errore (NotFoundPage). È utile per gestire gli errori 404 e migliorare l'esperienza utente.*/}
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

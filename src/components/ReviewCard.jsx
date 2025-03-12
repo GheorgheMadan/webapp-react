@@ -1,21 +1,30 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 // ReviewCard.jsx
+
 export default function ReviewCard({ reviewProp }) {
 
     const { name, text, vote } = reviewProp
+
 
     return (
         <>
             <div className="card mb-4">
                 <div className="card-body">
                     <p className="card-text">
-                        {text}
+                        {text || 'No review available'}
                     </p>
                     <strong>
-                        Vote: {vote}
+                        Vote: <span>{vote >= 1 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
+                        <span>{vote >= 2 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
+                        <span>{vote >= 3 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
+                        <span>{vote >= 4 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
+                        <span>{vote >= 5 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
                     </strong>
+
                     <address>
                         <i>
-                            By {name}
+                            By {name || 'Anonymous'}
                         </i>
                     </address>
                 </div>

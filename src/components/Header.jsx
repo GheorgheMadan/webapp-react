@@ -5,9 +5,9 @@ export default function Header() {
     return (
         <>
             <header>
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <Link class="navbar-brand" to="/">Bool Movies</Link>
+                <nav className="navbar bg-body-tertiary">
+                    <div className="container-fluid">
+                        <Link className="navbar-brand" to="/">Bool Movies</Link>
                     </div>
                 </nav>
             </header>

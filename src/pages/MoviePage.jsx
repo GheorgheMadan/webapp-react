@@ -1,5 +1,5 @@
-// import del Link e useParams dalla libreria react-router-dom
-import { Link, useParams } from "react-router-dom";
+// import del Link e useParams dalla libreria react-router-dom, useNavigate per la navigazione tra le pagine automatica
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // import axios per effettuare chiamate API
 import axios from "axios";
@@ -16,6 +16,9 @@ export default function MoviePage() {
     // estrapolazione del parametro id dalla url per recuperare il film in base all'id
     const { id } = useParams();
 
+    // Utilizzo di useNavigate per la navigazione tra le pagine automatica in caso di errore
+    const redirect = useNavigate();
+
     // Utilizzo di useState per salvare il film recuperato dalla chiamata API in get
     const [movie, setMovie] = useState({}); // inizializzazione dell'oggetto movie
 
@@ -23,10 +26,19 @@ export default function MoviePage() {
     function getMovie() {
         axios.get(`http://localhost:3000/api/movies/${id}`)
             .then(res => setMovie(res.data))
-            .catch(err => console.error(err, 'Errore nel recupero del film'))
+            .catch(err => {
+                console.log(err);
+                if (err.status === 404) redirect("/404")
+            });
+
+
+
     }
 
-    useEffect(() => getMovie(), [id]); // utilizzo di useEffect per chiamare la funzion getMovie al caricamento della pagina evitando il loop infinito
+    // Utilizzo di useEffect per chiamare la funzion getMovie al caricamento della pagina evitando il loop infinito
+    useEffect(() => getMovie(), [id]);
+
+
 
     return (
         <>
@@ -47,7 +59,7 @@ export default function MoviePage() {
                 </div>
             </div >
             <h2 className="mt-4 mb-4">Our community reviews</h2>
-            {movie.review?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
+            {movie.reviews?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
         </>
     )
 }
