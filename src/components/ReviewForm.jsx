@@ -14,7 +14,7 @@ export default function ReviewForm({ movieId, fetchMovie }) {
     // definizione dello stato del form
     const [form, setForm] = useState(initialForm)
 
-    // funzione per gestire il cambiamento dei valori del form
+    // FUNZIONE per gestire il cambiamento dei valori del form
     function changeForm(e) {
 
         // ESTRAPOLO IL NOME (il text, vote, name) E IL VALORE (il valore inserito dal cliente)  
@@ -49,7 +49,6 @@ export default function ReviewForm({ movieId, fetchMovie }) {
                         name="text"
                         value={form.text}
                         onChange={changeForm} /> {/* onChange è un evento che si scatena ogni volta che l'utente scrive qualcosa nell'input */}
-
                 </div>
                 <div className="mb-3">
                     <label htmlFor="vote" className="form-label">Vote</label>
