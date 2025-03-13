@@ -7,6 +7,9 @@ import axios from "axios";
 // import del componente Review Card
 import ReviewCard from "../components/ReviewCard";
 
+// import del componente ReviewForm.jsx
+import ReviewForm from "../components/ReviewForm";
+
 // import del useState e useEffect
 import { useState, useEffect } from "react";
 
@@ -30,14 +33,10 @@ export default function MoviePage() {
                 console.log(err);
                 if (err.status === 404) redirect("/404")
             });
-
-
-
     }
 
     // Utilizzo di useEffect per chiamare la funzion getMovie al caricamento della pagina evitando il loop infinito
     useEffect(() => getMovie(), [id]);
-
 
 
     return (
@@ -59,7 +58,12 @@ export default function MoviePage() {
                 </div>
             </div >
             <h2 className="mt-4 mb-4">Our community reviews</h2>
+
+            {/* Map del componente ReviewCard */}
             {movie.reviews?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
+
+            {/* COMPONENTE DEL FORM PER INSERIMENTO RECENSIONI  */}
+            <ReviewForm movieId={movie.id} fetchMovie={getMovie} />
         </>
     )
 }
