@@ -10,25 +10,26 @@ export default function ReviewCard({ reviewProp }) {
 
     return (
         <>
-            <div className="card mb-4">
-                <div className="card-body">
-                    <p className="card-text">
-                        {text || 'No review available'}
-                    </p>
-                    <strong>
-                        Vote: <span>{vote >= 1 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
-                        <span>{vote >= 2 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
-                        <span>{vote >= 3 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
-                        <span>{vote >= 4 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
-                        <span>{vote >= 5 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
-                    </strong>
-                    <address>
-                        <i>
-                            By {name || 'Anonymous'}
-                        </i>
-                    </address>
-                </div>
-            </div>
+            {reviewProp.length === 0 ? <h3>Nessuna recensione disponibile</h3> :
+                <div className="card mb-4">
+                    <div className="card-body">
+                        <p className="card-text">
+                            {text || 'No review available'}
+                        </p>
+                        <strong>
+                            Vote: <span>{vote >= 1 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon className="text-light" icon={faStar} />}</span>
+                            <span>{vote >= 2 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
+                            <span>{vote >= 3 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
+                            <span>{vote >= 4 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
+                            <span>{vote >= 5 ? <FontAwesomeIcon className="text-warning" icon={faStar} /> : <FontAwesomeIcon icon={farStar} className="text-light" />}</span>
+                        </strong>
+                        <address>
+                            <i>
+                                By {name || 'Anonymous'}
+                            </i>
+                        </address>
+                    </div>
+                </div>}
         </>
     )
 }

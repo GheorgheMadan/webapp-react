@@ -47,7 +47,7 @@ export default function MoviePage() {
             <div >
                 <div className="row">
                     <div className="col-2">
-                        <img src={movie.img} className="card-img-top" alt={movie.title} style={{ width: "18rem" }} />
+                        <img src={movie.img} className="card-img-top" alt={movie.title} style={{ width: "12rem" }} />
                     </div>
                     <div className="card-body col-10">
                         <h1 className="card-title">{movie.title}</h1>
@@ -60,7 +60,8 @@ export default function MoviePage() {
             <h2 className="mt-4 mb-4">Our community reviews</h2>
 
             {/* Map del componente ReviewCard */}
-            {movie.reviews.length === 0 ? <h3>Nessuna recensione disponibile</h3> : movie.reviews?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
+            {/* Applico la condizione nel caso non ci fossero recensioni disponibili */}
+            {movie.reviews?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
 
             {/* COMPONENTE DEL FORM PER INSERIMENTO RECENSIONI  */}
             <ReviewForm movieId={movie.id} fetchMovie={getMovie} />
