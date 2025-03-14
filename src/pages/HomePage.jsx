@@ -28,14 +28,12 @@ export default function HomePage() {
     // utilizzo dell'hook useEffect per eseguire solo una volta la funzione getMovies all'avvio della pagina
     useEffect(() => getMovies(), []) // le quadre vuote indicano che la funzione verrà eseguita una sola volta
 
-
-
     return (
         <>
             <h1 className="text-primary fw-semibold">Bool Movies</h1>
             <div className="d-flex flex-wrap gap-4 mt-4 justify-content-center">
                 {/* Utilizzo del metodo map per ciclare l'array movies e passare ad ogni iterazione il singolo film al componente MovieCard */}
-                {movies.map(movie => <MovieCard key={movie.id} movieProp={movie} />)}
+                {movies.length === 0 ? <h2>Nessun film disponibile</h2> : movies.map(movie => <MovieCard key={movie.id} movieProp={movie} />)}
             </div>
         </>
     )
