@@ -47,7 +47,7 @@ export default function MoviePage() {
             <div >
                 <div className="row">
                     <div className="col-2">
-                        <img src={movie.img} className="card-img-top" alt={movie.title} style={{ width: "12rem" }} />
+                        <img src={movie.img || '/imgs/not-found-image.png'} className="card-img-top" alt={movie.title} style={{ width: "12rem" }} />
                     </div>
                     <div className="card-body col-10">
                         <h1 className="card-title">{movie.title}</h1>

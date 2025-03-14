@@ -11,7 +11,7 @@ export default function MovieCard({ movieProp }) {
         <>
             <div className="card" style={{ width: "19rem" }}>
                 <div className="d-flex justify-content-center mt-2">
-                    <img src={img} className="card-img-top" alt={title} style={{ width: "12rem" }} />
+                    <img src={img || "/imgs/not-found-image.png"} className="card-img-top" alt={title} style={{ width: "12rem" }} />
                 </div>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
