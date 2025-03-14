@@ -13,6 +13,10 @@ import ReviewForm from "../components/ReviewForm";
 // import del useState e useEffect
 import { useState, useEffect } from "react";
 
+import VoteStars from "../components/voteStars";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faStar } from '@fortawesome/free-solid-svg-icons'; // stella piena
+// import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";  // stella vuota
 // MoviePage.jsx
 export default function MoviePage() {
 
@@ -35,9 +39,14 @@ export default function MoviePage() {
             });
     }
 
+    const calculateAverageVote = () => {
+        if (!movie.reviews || movie.reviews.length === 0) return 0; // Se non ci sono recensioni, la media è 0
+        const totalVotes = movie.reviews.reduce((acc, review) => acc + review.vote, 0); // Somma dei voti
+        return totalVotes / movie.reviews.length; // Media dei voti
+    };
+
     // Utilizzo di useEffect per chiamare la funzion getMovie al caricamento della pagina evitando il loop infinito
     useEffect(() => getMovie(), [id]);
-
 
     return (
         <>
@@ -58,7 +67,7 @@ export default function MoviePage() {
                 </div>
             </div >
             <h2 className="mt-4 mb-4">Our community reviews</h2>
-
+            <h3>Vote Average {VoteStars(calculateAverageVote().toFixed(0))}</h3>
             {/* Map del componente ReviewCard */}
             {/* Applico la condizione nel caso non ci fossero recensioni disponibili */}
             {movie.reviews?.map(review => <ReviewCard key={review.id} reviewProp={review} />)}
