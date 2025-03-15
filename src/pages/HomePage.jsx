@@ -1,6 +1,10 @@
 // import del componente MovieCard
 import MovieCard from "../components/MovieCard";
 
+// Import della funzione che passerà  a livello globale tutti i dati dalla richiesta
+import { useContext } from "react"
+import GlobalContext from "../contexts/GlobalContext";
+
 // import del useState e useEffect necessari per la gesione dello stato e degli effetti collaterali
 import { useState, useEffect } from "react";
 
@@ -8,17 +12,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-
 // HomePage.jsx 
 export default function HomePage() {
-
-    const [movies, setMovies] = useState([]) // dichiarazione dello stato movies inizializzanto come array vuoto
+    // riporto l'array vuoto movies e la funzione setMovies() così quando effettuo la chiamata axios passo i dati ricevuti dall'API all'array vuoto movies[] così da riceverli globalmente in tutta l'app
+    const { movies, setMovies } = useContext(GlobalContext) // dichiarazione dello stato movies inizializzanto come array vuoto
 
     // funzione per ottenre i film dal servere eseguendo una chiamata http in get per ottenere tutti i film 
     function getMovies() {
         axios.get('http://localhost:3000/api/movies')
             .then(res => {
                 console.log(res.data);
+                // Passo i dati dall'API all'array movies utilizzando la funzione setMovies
                 setMovies(res.data)
             })
             .catch(err => console.error((err), "Failed to fetch movies")
