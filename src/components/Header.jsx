@@ -17,9 +17,9 @@ export default function Header() {
                                     <NavLink className="nav-link" to='/'>Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to='create-new-movie-post' className="nav-link active" aria-current="page" href="#">Add New Movie</NavLink>
+                                    <NavLink to='admin-page' className="nav-link" aria-current="page" href="#">Admin</NavLink>
                                 </li>
-                                <li className="nav-item dropdown">
+                                {/* <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Dropdown
                                     </a>
@@ -32,7 +32,7 @@ export default function Header() {
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-                                </li>
+                                </li> */}
                             </ul>
                             <form className="d-flex" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

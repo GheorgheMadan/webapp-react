@@ -12,12 +12,14 @@ import HomePage from "./pages/HomePage"
 import MoviePage from "./pages/MoviePage"
 import NotFoundPage from "./pages/NotFoundPage"
 import CreateMoviePage from "./pages/CreateMoviePage"
+import SeeMoreAdminPage from "./pages/SeeMoreAdminPage"
 
 // IMPORT DEL GLOBAL CONTEXT 
 import GlobalContext from "./contexts/GlobalContext";
 
 // IMPORT DEL useState
 import { useState } from "react"
+import AdminPage from "./pages/AdminPage"
 
 
 function App() {
@@ -33,8 +35,13 @@ function App() {
             <Route element={<DefaultLayout />}>
               <Route index path="/" element={<HomePage />} />
               <Route path="movie/:id" element={<MoviePage />} />
-              <Route path="create-new-movie-post" element={<CreateMoviePage />} />
-              {/* La rotta "path='*'" cattura tutte le URL non definite in precedenza, reindirizzando l'utente a una pagina di errore (NotFoundPage). È utile per gestire gli errori 404 e migliorare l'esperienza utente.*/}
+
+              {/* Admin routes */}
+              <Route path="admin-page" element={<AdminPage />} />
+              <Route path="admin-page/create-new-movie" element={<CreateMoviePage />} />
+              <Route path="admin-page/see-more/:id" element={<SeeMoreAdminPage />} />
+
+              {/* La rotta "path='*'" cattura tutte le URL non definite in precedenza, reindirizzando l'utente a una pagina di errore (NotFoundPage). */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>

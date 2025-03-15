@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
+
+// installo npm install sweetalert2 per un UI piu carina della window confirm
+// importo 
+import Swal from 'sweetalert2';
+
 const initialFormData = {
     title: '',
     director: '',
@@ -37,11 +42,19 @@ export default function CreateMoviePage() {
     // FUNZIONE per gestire l'invio del form 
     function submit(e) {
         e.preventDefault() // previene il comportamento  di default del form, in questo caso il refresh della pagina
+        Swal.fire({
+            title: "Movie successfully added!",
+            text: "You clicked the button!",
+            icon: "success"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.post('http://localhost:3000/api/movies', form, { headers: { "Content-Type": "multipart/form-data" } })
+                    .then(() => navigate('/'))
+                    .catch(err => console.error(err, 'Creazione fallita')
+                    )
+            }
+        })
 
-        axios.post('http://localhost:3000/api/movies', form, { headers: { "Content-Type": "multipart/form-data" } })
-            .then(() => navigate('/'))
-            .catch(err => console.error(err, 'Creazione fallita')
-            )
     }
 
     return (
